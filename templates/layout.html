@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Server Monitoring</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Server Monitoring</a>
+                    {% if not session.logged_in %}
+                        <p class="navbar-text navbar-right login">
+                            <a href="/login">Login (default: <strong>admin</strong> / <strong>admin</strong>)</a>
+                        </p>
+                    {% else %}
+                        <p class="navbar-text navbar-left">
+                            <a href="/addUser">Add User</a>
+                        </p>
+                        <p class="navbar-text navbar-right logout">
+                            <a href="/logout">Logout</a>
+                        </p>
+                    {% endif %}
+                
+            </div>
+        </nav>
+
+        <!-- Sub Template -->
+        {% block body %}{% endblock %}
+        
+        <br><br><br><br><br>
+        <hr>
+        <footer>
+            <p class="text-muted text-center credit">Simple Server Monitoring System</p>
+        </footer>
+    </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
