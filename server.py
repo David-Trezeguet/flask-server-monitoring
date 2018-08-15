@@ -7,9 +7,10 @@ app.config.from_pyfile('config.cfg')
 
 @app.route('/')
 def index():
-    cur = g.db.execute('select * from servers order by name')
-    server_list = [dict(id=row[0], serverName=row[1], status=isAlive(row[1])) for row in cur.fetchall()]
-    return render_template('index.html', server_list=server_list)
+    # cur = g.db.execute('select * from servers order by name')
+    # server_list = [dict(id=row[0], serverName=row[1], status=isAlive(row[1])) for row in cur.fetchall()]
+    # return render_template('index.html', server_list=server_list)
+    return render_template('index.html')
 
 def connect_db():
     return sqlite3.connect(app.config['DATABASE'])
